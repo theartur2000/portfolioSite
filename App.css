@@ -1,0 +1,103 @@
+/* Basic styling for the sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px; /* Initial width of the sidebar for desktop */
+    height: 100%;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    color: white;
+  }
+  
+  /* Sidebar indicator */
+  .sidebar-indicator, .sidebar-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    font-size: 24px; /* Larger icon size */
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Close button style */
+  .sidebar-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+  }
+  
+  /* Expand the sidebar when hovered or clicked */
+  .sidebar.open {
+    width: 250px; /* Width when expanded */
+  }
+  
+  /* Sidebar links */
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 60px; /* Ensure links start below the header */
+  }
+  
+  .sidebar ul li {
+    padding: 8px 8px 8px 32px;
+    text-align: left;
+    white-space: nowrap; /* Prevents text from wrapping */
+    opacity: 0; /* Start with text hidden */
+    transition: opacity 0.3s, visibility 0.3s; /* Smooth transition */
+    visibility: hidden; /* Start with text hidden */
+  }
+  
+  /* Make text visible when the sidebar is open */
+  .sidebar.open ul li {
+    opacity: 1; /* Make text visible */
+    visibility: visible; /* Make text visible */
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: color 0.3s;
+  }
+  
+  /* Change color on hover */
+  .sidebar ul li a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Content shifts when sidebar opens */
+  body .App {
+    margin-left: 60px; /* Initial margin when sidebar is closed */
+    transition: margin-left 0.3s;
+  }
+  
+  .sidebar.open ~ .App {
+    margin-left: 250px; /* Margin when sidebar is open */
+  }
+  
+  /* Media Queries for Mobile Devices */
+  @media screen and (max-width: 768px) {
+    .sidebar {
+      width: 0; /* Collapsed width for mobile */
+      overflow: hidden; /* Hide overflow */
+    }
+  
+    .sidebar.open {
+      width: 100%; /* Full width when expanded on mobile */
+    }
+  
+    .sidebar-indicator {
+      display: block; /* Always show the indicator on mobile */
+    }
+  
+    .sidebar ul {
+      margin-top: 0; /* Remove margin on mobile */
+    }
+  }
+  
